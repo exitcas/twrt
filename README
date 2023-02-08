@@ -9,8 +9,8 @@ Requirements:
 - Having the Pillow Python module installed
 
 
-Compiling:
-You just need to run 'nimble build'.
+Compiling and configuration:
+You just need to run 'nimble build' and edit 'config.json' with the required information.
 
 
 Commands:
