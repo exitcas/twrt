@@ -1,0 +1,42 @@
+html {
+  margin: 0;
+  padding: 3px 25%;
+  background: url("https://anlucas.neocities.org/starsbg.gif");
+}
+body {
+  border: solid 1px white;
+  color: white;
+  padding: 3px;
+}
+
+#header, #footer { text-align: center; }
+#footer { font-size: small; }
+
+#gallery {
+  width: 100%;
+  display: table;
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+}
+#gallery li {
+  float: left;
+  width: 33%;
+  text-align: center;
+  border: solid 1px white;
+}
+#gallery img {
+  min-width: 90px;
+  max-width: 150px;
+}
+
+@media only screen and (max-width: 1000px) {
+  html { padding: 3px 10%; }
+  #gallery li { width: 49%; }
+}
+
+@media only screen and (max-width: 500px) {
+  html { padding: 3px 3px; }
+  #gallery li { width: 97.50%; }
+}

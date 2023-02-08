@@ -1,0 +1,27 @@
+$header;
+<h2>Transmissions</h2>
+
+<noscript>
+  <p>
+    Hello,
+    <br />
+    This image gallery needs Javascript to work.
+    <br />
+    If you know something about web-related coding or something related, you are more than invited to have a look at the '<a href="transmissions.json"><code>transmissions.json</code></a>' file, where all the details showed on this gallery by the Javascript version of this website are saved.
+    <br />
+    All images are hosted using a similar URL pattern: <code>https://wrm.neocities.org/imgs/&lt;id&gt;.jpg</code>, and all dates are formated on the <a href="https://datatracker.ietf.org/doc/rfc3339/">RFC 3339</a> proposed standard.
+    <br />
+    Thank you for your understanding,
+    <br />
+    The webmaster.
+  </p>
+</noscript>
+
+<ul id="gallery"></ul>
+<p id="more" style="display: none;"><button style="width: 100%;" onclick="renderMore();">Load more!</button></p>
+<p id="loading" style="text-align: center;"></p>
+
+<script>
+const page=12;var already=0;var data=[];var bottom=false;async function getNewData(){document.getElementById("loading").style="display: block;";const resp=await fetch("transmissions.json");const json=await resp.json();return json}getNewData().then(contents=>{data=contents;document.getElementById("more").style="display: block;";renderMore()});function scapeTags(text){text=text.toString();text=text.split("<");text=text.join("&lt;");text=text.split(">");text=text.join("&gt;");return text}function bottomReached(){document.getElementById("more").style="display: none;";bottom=true}function renderMore(){if(data.length===0){document.getElementById("gallery").innerHTML="No images :/";return}for(var i=0;i<page;i+=1){console.log(data[already+1]);var info=data[already];var note=info["note"];if(note!==""){note="<br />Note: <i>"+note+"</i>"}var date=new Date(info["date"].toString());document.getElementById("gallery").innerHTML+=`<li><a href="imgs/${info["id"].toString()}.jpg" target="_blank"><img alt="${scapeTags(info["caption"])}" title="Click to open!" src="imgs/${info["id"].toString()}.jpg" /></a><br /><span>Caption: <i>${scapeTags(info["caption"])}</i><br />Date: ${date.getUTCFullYear()}/${date.getUTCMonth()}/${date.getUTCDay()} ${date.getUTCHours()}:${date.getUTCMinutes()}hs UTC${note}</span></li>`;if(typeof data[already+1]==="undefined"){bottomReached();break}already+=1;}document.getElementById("loading").innerHTML=""}
+</script>
+$footer;

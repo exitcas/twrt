@@ -1,0 +1,20 @@
+The Weird Radio Transmitter
+(a.k.a. TWRT)
+The software powering the 'Weird Radio Message' Mastodon account and website.
+
+
+Requirements:
+- Python 3+ and Nim 0.6+
+- OpenSSL
+- Having the Pillow Python module installed
+
+
+Compiling:
+You just need to run 'nimble build'.
+
+
+Commands:
+twrt --help         => Displays list of currently available commands.
+twrt --version      => Displays the current version and date of release.
+twrt post <caption> => Generates a new image, 'transmissions.json' file and a Mastodon post with the caption.
+twrt build          => Generates the rest of the website using the templates on 'src/templates'.
