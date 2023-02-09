@@ -1,15 +1,17 @@
 const doc = """
 The Weird Radio Transmitter
 
-| This software is open-source!
+| This software is open source!
 | https://github.com/exitcas/twrt.git
 
-Usage: twrt --help
-       twrt --version
-       twrt post <caption>...
-       twrt build
-Try: twrt post "Lorem Impsum"
-     twrt build
+Usage:
+    twrt --help              Displays list of currently available commands.
+    twrt --version           Displays the current version and date of release.
+    twrt post <caption>...   Generates a new image, 'transmissions.json' file and a Mastodon post with the caption.
+    twrt build               Generates the rest of the website using the templates on 'src/templates'.
+Try:
+    twrt post "Lorem Impsum"
+    twrt build
 """
 
 import
@@ -27,15 +29,7 @@ let generate_card = pyImport("generate_card")
     
 
 
-var args = docopt(doc)
-#echo args
-
-#if args["-v"]:
-#    #echo unicode.capitalize(repeat("very ", args["-v"].len - 1) & "verbose")
-#    echo args["-v"]
-
-if args["--version"]:
-    echo "The Weird Radio Transmitter\nv1.0.0\n2023-02-07"
+var args = docopt(doc, help=true, version="The Weird Radio Transmitter\nv1.0.1\n2023-02-09")
 
 if args["post"]:
     var caption = args["<caption>"][0]
@@ -55,8 +49,6 @@ if args["post"]:
     uploadTransmission(id)
     echo "Posting to Mastodon..."
     postStatus(caption)
-    #for kind, path in walkDir("export/imgs"):
-    #    echo path
 
 
 if args["build"]:
@@ -65,8 +57,3 @@ if args["build"]:
     buildWebsite()
     echo "Uploading..."
     uploadWebsite()
-
-#echo @(args["--text"])
-
-#for path in @(args["--text"]):
-#    echo read_file(path)

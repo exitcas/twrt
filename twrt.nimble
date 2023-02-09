@@ -1,8 +1,8 @@
 # Package
 
-version       = "0.1.0"
+version       = "1.0.1"
 author        = "exitcas"
-description   = "The software powering the 'Weird Radio Message' Mastodon account and website."
+description   = "The software powering the 'Weird Radio Messages' Mastodon account and website."
 license       = "MIT"
 srcDir        = "src"
 bin           = @["twrt"]

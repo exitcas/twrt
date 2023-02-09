@@ -22,13 +22,16 @@ body {
 }
 #gallery li {
   float: left;
-  width: 33%;
+  width: 32.60%;
+  height: 200px;
+  overflow-y: auto;
+  overflow-wrap: break-word;
   text-align: center;
   border: solid 1px white;
 }
 #gallery img {
-  min-width: 90px;
-  max-width: 150px;
+  width: 150px;
+  height: auto;
 }
 
 @media only screen and (max-width: 1000px) {

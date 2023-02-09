@@ -13,6 +13,7 @@ async function getNewData () {
 // Store data into the 'data' function when gotten
 getNewData().then(contents => {
   data = contents;
+  data.reverse();
   document.getElementById("more").style = "display: block;";
   renderMore();
 });
@@ -41,15 +42,17 @@ function renderMore () {
     var info = data[already];
     var note = info["note"];
     if (note !== "") { note = "<br />Note: <i>" + note + "</i>"; }
-    var date = new Date(info["date"].toString());
+    // Parse date
+    var date = new Date(info["date"].toString()).toUTCString();
+    // Add to the gallery
     document.getElementById("gallery").innerHTML += `
       <li>
-        <a href="imgs/${info["id"].toString()}.png" target="_blank"><img alt="${scapeTags(info["caption"])}" title="Click to open!" src="imgs/${info["id"].toString()}.png" /></a>
+        <a href="imgs/${info["id"].toString()}.jpg" target="_blank"><img alt="${scapeTags(info["caption"])}" title="Click to open!" src="imgs/${info["id"].toString()}.jpg" /></a>
         <br />
         <span>
           Caption: <i>${scapeTags(info["caption"])}</i>
           <br />
-          Date: ${date.getUTCFullYear()}/${date.getUTCMonth()}/${date.getUTCDay()} ${date.getUTCHours()}:${date.getUTCMinutes()}hs UTC
+          Date: ${date}
         ${note}
         </span>
       </li>

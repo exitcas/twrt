@@ -20,7 +20,7 @@ def generate_card(name, text):
 
     # Apply font
     font = ImageFont.truetype("./src/fonts/archivo.ttf", 25)
-    wrap = textwrap.wrap(text, 33, break_long_words=True)
+    wrap = textwrap.wrap(text, 25, break_long_words=True)
     text = "\n".join(wrap)
 
 
@@ -38,10 +38,10 @@ def generate_card(name, text):
 
 
     # Put text on a random spot of the screen
-    x = randint(10, img.width - padding - width)
-    #if x < 0: x = 0
-    y = randint(10, img.height - padding - height)
-    #if y < 0: y = 0
+    try: x = randint(10, img.width - padding - width)
+    except: x = 0
+    try: y = randint(10, img.height - padding - height)
+    except: y = 0
     draw.text(
         (x, y),
         text,
@@ -76,4 +76,4 @@ def generate_card(name, text):
     # Convert into JPEG image and save
     jpg = Image.new("RGB", img.size, (255, 255, 255))
     jpg.paste(img, mask=img.split()[3])
-    jpg.save(name, "JPEG")
+    jpg.save(name, "JPEG", quality="80", optimize=True)
