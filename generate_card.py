@@ -76,4 +76,4 @@ def generate_card(name, text):
     # Convert into JPEG image and save
     jpg = Image.new("RGB", img.size, (255, 255, 255))
     jpg.paste(img, mask=img.split()[3])
-    jpg.save(name, "JPEG", quality="80", optimize=True)
+    jpg.save(name, "JPEG", quality=80, optimize=True)

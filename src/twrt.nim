@@ -5,10 +5,10 @@ The Weird Radio Transmitter
 | https://github.com/exitcas/twrt.git
 
 Usage:
-    twrt --help              Displays list of currently available commands.
-    twrt --version           Displays the current version and date of release.
-    twrt post <caption>...   Generates a new image, 'transmissions.json' file and a Mastodon post with the caption.
-    twrt build               Generates the rest of the website using the templates on 'src/templates'.
+    twrt --help
+    twrt --version
+    twrt post <caption>...
+    twrt build
 Try:
     twrt post "Lorem Impsum"
     twrt build
